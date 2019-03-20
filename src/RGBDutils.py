@@ -6,6 +6,7 @@ import numpy as np
 
 import torchvision
 from torchvision import datasets, models, transforms
+from torchvision.datasets.folder import default_loader
 from torchvision.transforms import functional as F
 import torch.utils.data as data
 import matplotlib.pyplot as plt
@@ -63,30 +64,6 @@ def make_dataset(directory, class_to_idx):
     #                    print(type(images))
 
     return images
-
-
-def pil_loader(path):
-    # open path as file to avoid ResourceWarning (https://github.com/python-pillow/Pillow/issues/835)
-    with open(path, 'rb') as f:
-        img = Image.open(f)
-        return img.convert('RGB')
-
-
-def accimage_loader(path):
-    import accimage
-    try:
-        return accimage.Image(path)
-    except IOError:
-        # Potentially a decoding problem, fall back to PIL.Image
-        return pil_loader(path)
-
-
-def default_loader(path):
-    from torchvision import get_image_backend
-    if get_image_backend() == 'accimage':
-        return accimage_loader(path)
-    else:
-        return pil_loader(path)
 
 
 class ImageFolder(data.Dataset):
