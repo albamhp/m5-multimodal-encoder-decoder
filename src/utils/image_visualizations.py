@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 from utils import MEAN_RGB, STD_RGB, MEAN_DEPTH, STD_DEPTH
 
 
-def imshow_rgb(inp, mean=MEAN_RGB, std=STD_RGB, title=None):
+def imshow_unimodal(inp, mean=MEAN_RGB, std=STD_RGB, title=None):
     """Imshow for Tensor."""
     inp = inp.numpy().transpose((1, 2, 0))
     mean = np.array(mean)
