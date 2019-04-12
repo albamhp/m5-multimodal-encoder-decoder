@@ -8,4 +8,4 @@
 #SBATCH --output ../logs/%x_%u_%j.out
 
 source /home/grupo06/venv/bin/activate
-python jupyter-notebook --no-browser --port=7810 notebook${SLURM_JOB_ID}
+jupyter notebook --no-browser --port=7810
